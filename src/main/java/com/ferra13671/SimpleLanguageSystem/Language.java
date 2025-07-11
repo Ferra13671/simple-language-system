@@ -11,7 +11,7 @@ public class Language {
     public void addTranslations(HashMap<InputStream, String> languageMap) {
         languageMap.forEach((inputStream, basicId) ->
                 LanguageUtils.loadFromInputStream(inputStream).forEach((name, value) ->
-                        gotoPath(String.join(".", basicId, name), true).copyFrom(value)
+                        gotoPath(!basicId.isEmpty() ? String.join(".", basicId, name) : name, true).copyFrom(value)
                 )
         );
     }

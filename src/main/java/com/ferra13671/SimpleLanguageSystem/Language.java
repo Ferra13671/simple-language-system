@@ -38,7 +38,7 @@ public class Language {
                 if (!createSubContainers)
                     return new TextContainer(path, null);
                 else {
-                    textContainer = new TextContainer("", null);
+                    textContainer = new TextContainer(containerId, null);
                     if (prevTextContainer != null)
                         prevTextContainer.addSubText(containerId, textContainer);
                 }

@@ -33,7 +33,7 @@ public class Language {
                     prevTextContainer = textContainer;
             }
 
-            textContainer = prevTextContainer != null ? prevTextContainer.getSubTexts().get(containerId) : textContainers.get(containerId);
+            textContainer = prevTextContainer != null ? prevTextContainer.getSubTexts() != null ? prevTextContainer.getSubTexts().get(containerId) : null : textContainers.get(containerId);
             if (textContainer == null) {
                 if (!createSubContainers)
                     return new TextContainer(path, null);

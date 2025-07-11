@@ -18,6 +18,10 @@ public class LanguageSystem {
         return getOrCreateLanguage(languageGetter.get()).get(id);
     }
 
+    public static String translate(String id, String... args) {
+        return String.format(translate(id), args);
+    }
+
     public static void addTranslations(String languageName, HashMap<InputStream, String> languageMap) {
         Language language = getOrCreateLanguage(languageName);
         language.addTranslations(languageMap);

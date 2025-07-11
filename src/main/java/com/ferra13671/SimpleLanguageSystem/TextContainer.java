@@ -31,6 +31,7 @@ public class TextContainer {
     public void copyFrom(TextContainer textContainer) {
         setText(textContainer.getText());
         if (subTexts == null) subTexts = textContainer.getSubTexts();
-        else subTexts.putAll(textContainer.getSubTexts());
+        else if (textContainer.getSubTexts() != null)
+            subTexts.putAll(textContainer.getSubTexts());
     }
 }

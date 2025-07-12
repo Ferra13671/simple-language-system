@@ -1,6 +1,7 @@
 package com.ferra13671.SimpleLanguageSystem;
 
-import java.io.InputStream;
+import com.google.gson.JsonElement;
+
 import java.util.HashMap;
 
 public class Language {
@@ -8,9 +9,9 @@ public class Language {
 
     public Language() {}
 
-    public void addTranslations(HashMap<InputStream, String> languageMap) {
+    public void addTranslations(HashMap<JsonElement, String> languageMap) {
         languageMap.forEach((inputStream, basicId) ->
-                LanguageUtils.loadFromInputStream(inputStream).forEach((name, value) ->
+                LanguageUtils.loadFromJsonElement(inputStream).forEach((name, value) ->
                         gotoPath(!basicId.isEmpty() ? String.join(".", basicId, name) : name, true).copyFrom(value)
                 )
         );

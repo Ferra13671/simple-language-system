@@ -1,12 +1,9 @@
 package com.ferra13671.SimpleLanguageSystem;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 public class LanguageUtils {
@@ -15,8 +12,8 @@ public class LanguageUtils {
         return path.split("\\.");
     }
 
-    protected static HashMap<String, TextContainer> loadFromInputStream(InputStream inputStream) {
-        JsonObject jsonObject = JsonParser.parseReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)).getAsJsonObject();
+    protected static HashMap<String, TextContainer> loadFromJsonElement(JsonElement jsonElement) {
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
 
         HashMap<String, TextContainer> languageMap = new HashMap<>();
 

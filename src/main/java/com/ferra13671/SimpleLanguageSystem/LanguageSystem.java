@@ -1,5 +1,7 @@
 package com.ferra13671.SimpleLanguageSystem;
 
+import com.google.gson.JsonElement;
+
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.function.Supplier;
@@ -27,7 +29,7 @@ public class LanguageSystem {
         return String.format(translate(id), args);
     }
 
-    public static void addTranslations(String languageName, HashMap<InputStream, String> languageMap) {
+    public static void addTranslations(String languageName, HashMap<JsonElement, String> languageMap) {
         Language language = getOrCreateLanguage(languageName);
         language.addTranslations(languageMap);
     }

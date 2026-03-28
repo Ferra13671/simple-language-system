@@ -9,7 +9,7 @@ public class Language {
 
     public void addTranslations(HashMap<JsonObject, String> languageMap) {
         languageMap.forEach((element, basicId) ->
-                LanguageUtils.loadFromJsonObject(element).forEach((name, value) ->
+                LanguageUtils.parseTranslations(element).forEach((name, value) ->
                         gotoPath(!basicId.isEmpty() ? String.join(".", basicId, name) : name, true).copyFrom(value)
                 )
         );
@@ -27,7 +27,7 @@ public class Language {
             if (textContainer != null) {
                 if (prevTextContainer == null) {
                     prevTextContainer = textContainer;
-                    textContainers.put(prevId, prevTextContainer);
+                    this.textContainers.put(prevId, prevTextContainer);
                 } else
                     prevTextContainer = textContainer;
             }

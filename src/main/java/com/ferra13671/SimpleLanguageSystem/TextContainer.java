@@ -1,37 +1,31 @@
 package com.ferra13671.SimpleLanguageSystem;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 
+@AllArgsConstructor
 public class TextContainer {
+    @Setter
+    @Getter
     private String text;
+    @Getter
     private HashMap<String, TextContainer> subTexts;
 
-    public TextContainer(String text, HashMap<String, TextContainer> subTexts) {
-        this.text = text;
-        this.subTexts = subTexts;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public void addSubText(String id, TextContainer textContainer) {
-        if (subTexts == null) subTexts = new HashMap<>();
-        subTexts.put(id, textContainer);
-    }
+        if (this.subTexts == null)
+            this.subTexts = new HashMap<>();
 
-    public String getText() {
-        return text;
-    }
-
-    public HashMap<String, TextContainer> getSubTexts() {
-        return subTexts;
+        this.subTexts.put(id, textContainer);
     }
 
     public void copyFrom(TextContainer textContainer) {
         setText(textContainer.getText());
-        if (subTexts == null) subTexts = textContainer.getSubTexts();
+        if (this.subTexts == null)
+            this.subTexts = textContainer.getSubTexts();
         else if (textContainer.getSubTexts() != null)
-            subTexts.putAll(textContainer.getSubTexts());
+            this.subTexts.putAll(textContainer.getSubTexts());
     }
 }

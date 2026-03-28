@@ -1,17 +1,15 @@
 package com.ferra13671.SimpleLanguageSystem;
 
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.util.HashMap;
 
 public class Language {
     private final HashMap<String, TextContainer> textContainers = new HashMap<>();
 
-    public Language() {}
-
-    public void addTranslations(HashMap<JsonElement, String> languageMap) {
-        languageMap.forEach((inputStream, basicId) ->
-                LanguageUtils.loadFromJsonElement(inputStream).forEach((name, value) ->
+    public void addTranslations(HashMap<JsonObject, String> languageMap) {
+        languageMap.forEach((element, basicId) ->
+                LanguageUtils.loadFromJsonObject(element).forEach((name, value) ->
                         gotoPath(!basicId.isEmpty() ? String.join(".", basicId, name) : name, true).copyFrom(value)
                 )
         );
